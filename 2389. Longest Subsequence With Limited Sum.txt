@@ -2,12 +2,30 @@ Leetcode - 2389. Longest Subsequence With Limited Sum
 https://leetcode.com/problems/longest-subsequence-with-limited-sum/
 
 class Solution {
-    public int arrayPairSum(int[] n) {
+    public int[] answerQueries(int[] n, int[] q) {
         Arrays.sort(n);
-        int s=0;
-        for(int i=0;i<n.length;i+=2){
-            s+=n[i];
+        int m[]=new int[q.length];
+        for(int i=0;i<q.length;i++){
+            long min=0;
+            int j=0;
+            long s=0;
+            int k=0;
+            while(j<n.length){
+                s+=n[j];
+                if(s<=(long)q[i] && s>min){
+                    m[i]=j-k+1;
+                    min=s;
+                    j++;
+                }
+                else if(s>(long)q[i]){
+                    s-=n[k];
+                    k++;
+                    j++;
+                }
+            }
+            
         }
-        return s;
+        
+        return m;
     }
 }
