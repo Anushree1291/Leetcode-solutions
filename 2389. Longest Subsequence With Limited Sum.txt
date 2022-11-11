@@ -1,0 +1,13 @@
+Leetcode - 2389. Longest Subsequence With Limited Sum
+https://leetcode.com/problems/longest-subsequence-with-limited-sum/
+
+class Solution {
+    public int arrayPairSum(int[] n) {
+        Arrays.sort(n);
+        int s=0;
+        for(int i=0;i<n.length;i+=2){
+            s+=n[i];
+        }
+        return s;
+    }
+}
