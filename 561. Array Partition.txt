@@ -1,0 +1,13 @@
+Leetcode - 561. Array Partition
+https://leetcode.com/problems/array-partition/
+
+class Solution {
+    public int arrayPairSum(int[] n) {
+        Arrays.sort(n);
+        int s=0;
+        for(int i=0;i<n.length;i+=2){
+            s+=n[i];
+        }
+        return s;
+    }
+}
