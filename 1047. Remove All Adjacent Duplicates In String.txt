@@ -1,0 +1,20 @@
+Leetcode - 1047. Remove All Adjacent Duplicates In String
+https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
+
+class Solution {
+    public String removeDuplicates(String s) {
+        Stack<Character> ar=new Stack<Character>();
+        for(char ch:s.toCharArray()){
+            if( ar.size()==0 || ch!=ar.peek()){
+                ar.push(ch);
+            }
+            else
+                ar.pop();
+        }
+        StringBuilder br=new StringBuilder();
+        for(char ch:ar){
+            br.append(ch);
+        }
+        return br.toString();
+    }
+}
