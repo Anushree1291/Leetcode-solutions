@@ -1,0 +1,108 @@
+Leetcode - 52. N-Queens II
+https://leetcode.com/problems/n-queens-ii/
+
+class Solution {
+    int ae=0;
+    public int totalNQueens(int n) {
+        boolean a[][]=new boolean[n][n];
+        traversal(a,0,0,n);
+        return ae;
+    }
+    
+    public void traversal(boolean[][] a,int r,int c,int n){
+        if(c==a.length){
+            r++;
+            c=0;
+        }
+        
+        if(r==a.length && n==0){
+            ++ae;
+            return;
+        }
+        else if(r>=a.length){
+            return;
+        }
+        
+        //System.out.println(r+" "+c+" "+n);
+        if(QueenCanBePlaced(a,r,c)==true){
+            a[r][c]=true;
+            traversal(a,r,c+1,n-1);
+            a[r][c]=false;
+        }
+        traversal(a,r,c+1,n);
+    }
+    public boolean QueenCanBePlaced(boolean[][] a,int r,int c){
+        int i=r-1;
+        int j=c;
+        while(i>=0){
+            if(a[i][j]==true){
+                return false;
+            }
+            --i;
+        }
+        
+        i=r+1;
+        while(i<a.length){
+            if(a[i][j]==true){
+                return false;
+            }
+            i++;
+        }
+        
+        i=r;
+        j=c-1;
+        while(j>=0){
+            if(a[i][j]==true){
+                return false;
+            }
+            j--;
+        }
+        
+        j=c+1;
+        while(j<a.length){
+            if(a[i][j]==true){
+                return false;
+            }
+            j++;
+        }
+        
+        i=r+1;
+        j=c+1;
+        while(i<a.length && j<a.length){
+            if(a[i][j]==true){
+                return false;
+            }
+            i++;j++;
+        }
+        
+        i=r-1;
+        j=c-1;
+        while(i>=0 && j>=0){
+            if(a[i][j]==true){
+                return false;
+            }
+            i--;j--;
+        }
+        
+        i=r+1;
+        j=c-1;
+        while(i<a.length && j>=0){
+            if(a[i][j]==true){
+                return false;
+            }
+            i++;j--;
+        }
+        
+        i=r-1;
+        j=c+1;
+        while(i>=0 && j<a.length){
+            if(a[i][j]==true){
+                return false;
+            }
+            i--;j++;
+        }
+        
+        return true;
+    }
+    
+}
