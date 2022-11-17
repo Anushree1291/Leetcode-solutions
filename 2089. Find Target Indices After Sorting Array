@@ -1,0 +1,17 @@
+Leetcode - 2089. Find Target Indices After Sorting Array
+https://leetcode.com/problems/find-target-indices-after-sorting-array/
+
+class Solution {
+    public List<Integer> targetIndices(int[] n, int t) {
+        List<Integer> ar= new LinkedList<Integer>();
+        Arrays.sort(n);
+        int j=0;
+        for(int i:n ){
+            if(i==t){
+                ar.add(j);
+            }
+            j++;
+        }
+        return ar;
+    }
+}
