@@ -1,0 +1,42 @@
+Leetcode - 47. Permutations II
+https://leetcode.com/problems/permutations-ii/
+
+class Solution {
+    Set<List<Integer>> arr=new HashSet<List<Integer>>();
+    
+    public List<List<Integer>> permuteUnique(int[] n) {
+        boolean b[]= new boolean[n.length];
+        Arrays.fill(b,true);
+        int l=n.length;
+        List<Integer> ar=new LinkedList<Integer>();
+        List<List<Integer>> ara= new LinkedList<List<Integer>>();
+        //ara.addAll(arr);
+        backt(0,l,n,b,ar);
+        for(List a:arr){
+            ara.add(a);
+        }
+        return ara;
+        
+    }
+    public void backt(int a,int l,int[] n,boolean[] b, List<Integer> ar){
+        if(a==l){
+            //System.out.println(ar);
+            for(boolean j:b){
+            // System.out.print(j+" ");   
+            }
+            arr.add(new LinkedList<Integer>(ar));
+            return;
+        }
+        
+        for(int i=0;i<n.length;i++){
+            if(b[i]==true){
+                ar.add(n[i]);
+                b[i]=false;
+                backt(a+1,l,n, b, ar);
+                b[i]=true;
+                ar.remove(ar.size()-1);
+            }
+        }
+        return;
+    }
+}
