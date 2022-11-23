@@ -1,0 +1,37 @@
+Leetcode  -  1255. Maximum Score Words Formed by Letters
+https://leetcode.com/problems/maximum-score-words-formed-by-letters/
+
+class Solution {
+    public int maxScoreWords(String[] w, char[] l, int[] s) {
+        int c[]=new int[26];
+        for(char ch : l){
+            c[ch-'a']++;
+        }
+        int r=backt(w,s,c,0);
+        return r;
+        
+    }
+    
+    public int backt(String[] w, int[] s,int c[], int in){
+        int r=0;
+        int m=0;
+        for(int i=in;i<w.length;i++){
+            r=0;
+            boolean v=true;
+            for(char ch: w[i].toCharArray()){
+                c[ch-'a']--;
+                r+=s[ch-'a'];
+                if(c[ch-'a'] < 0)  v=false;
+            }
+            if(v){
+                r+=backt(w,s,c,i+1);
+                m=Math.max(m,r);
+            }
+            for(char ch: w[i].toCharArray()){
+                c[ch-'a']++;
+                r=0;
+            }
+        }
+        return m;
+    }
+}
