@@ -1,0 +1,35 @@
+Leetcode -  2133. Check if Every Row and Column Contains All Numbers
+https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers/
+
+class Solution {
+    public boolean checkValid(int[][] m) {
+        boolean b[]=new boolean[m.length];
+        Arrays.fill(b,false);
+        for(int i=0;i<m.length;i++){
+            for(int j=0;j<m.length;j++){
+                if(!back(i,j,m,m[i][j])){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    public boolean back(int i,int j,int[][] m,int n){
+        
+        for(int x=j+1;x<m.length;x++){
+            if(m[i][x]==n){
+                return false;
+            }
+        }
+
+        for(int x=i+1;x<m.length;x++){
+            if(m[x][j]==n){
+                return false;
+            }
+        }
+        
+        return true;
+        
+    }
+}
