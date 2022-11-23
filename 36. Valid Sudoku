@@ -1,0 +1,49 @@
+Leetcode - 36. Valid Sudoku
+https://leetcode.com/problems/valid-sudoku/
+
+class Solution {
+    public boolean isValidSudoku(char[][] b) {
+        boolean c=false;
+        for(int i=0;i<b.length;i++){
+            for(int j=0;j<b.length;j++){
+                if(b[i][j]!='.'){
+                    c=back(b,i,j,b[i][j]);
+                    //System.out.println(i+" "+j+" "+c);
+                    if(c==false){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    
+    public boolean back(char[][]b, int i,int j ,char ch){
+        
+        for(int x=j+1;x<b.length;x++){
+            if(b[i][x]==ch){
+                return false;
+            }
+        }
+        
+        for(int x=i+1;x<b.length;x++){
+            if(b[x][j]==ch){
+                return false;
+            }
+        }
+        
+        int r=i-i%3;
+        int c=j-j%3;
+        for(int x=r;x<r+3;x++){
+            for(int y=c;y<c+3;y++){
+               // System.out.print(x+" "+y+" ");
+                if(b[x][y]==ch && !(x==i) && !(y==j)){
+                    return false;
+                }
+            }
+        }
+        //System.out.println(i+" "+j);
+        return true;
+    }
+    
+}
