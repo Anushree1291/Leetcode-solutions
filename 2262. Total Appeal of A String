@@ -1,0 +1,28 @@
+Leetcode -  2262. Total Appeal of A String
+https://leetcode.com/problems/total-appeal-of-a-string/
+
+
+class Solution {
+    public long appealSum(String s) {
+        if(s.length()<2){
+            return 1;
+        }
+        
+        long a[]=new long[s.length()+1];
+        int l[]=new int[26];
+        Arrays.fill(l,-1);
+        for(int i=0;i<s.length();i++){
+            int c= s.charAt(i)-'a';
+            System.out.println(a[i]+" "+i+" "+l[c]);
+            
+            a[i+1]=a[i]+i-l[c];
+            l[c]=i;
+        }
+        long r=0;
+        for(long i:a){
+            r+=i;
+        }
+        System.out.println();
+        return r;
+    }
+}
