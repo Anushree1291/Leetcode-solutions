@@ -1,0 +1,27 @@
+Leetcode -   2063. Vowels of All Substrings
+https://leetcode.com/problems/vowels-of-all-substrings/
+
+class Solution {
+    public long countVowels(String w) {
+        long a[]=new long[w.length()];
+        if(w.charAt(0)=='a' || w.charAt(0)=='e' || w.charAt(0)=='i' || w.charAt(0)=='o' || w.charAt(0)=='u' ){
+            a[0]=1;
+        }
+        else{
+            a[0]=0;
+        }
+        long r=a[0];
+        for(int i=1;i<w.length();i++){
+            if(w.charAt(i)=='a' || w.charAt(i)=='e' || w.charAt(i)=='i' || w.charAt(i)=='o' || w.charAt(i)=='u' ){
+                a[i]=a[i-1]+i+1;
+            }
+            else{
+                a[i]=a[i-1];
+            }
+            r+=a[i];
+        }
+        
+        
+        return r;
+    }
+}
