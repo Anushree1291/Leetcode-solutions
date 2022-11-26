@@ -1,0 +1,27 @@
+Leetcode - 1759. Count Number of Homogenous Substrings
+https://leetcode.com/problems/count-number-of-homogenous-substrings/
+
+class Solution {
+    public int countHomogenous(String s) {
+        long r=0;
+        int m=1000000007;
+        int i=1;
+        int j=0;
+        while(i<s.length()){
+            char ch=s.charAt(i);
+            if(ch!=s.charAt(i-1)){
+                long n=i-j;
+                r+=(n*(n+1)/2);
+                r=r%m;
+                j=i;
+            }
+            
+            ++i;
+        }
+        long n=i-j;
+        r+=n*(n+1)/2;
+        r=r%m;
+        
+        return (int)r;
+    }
+}
