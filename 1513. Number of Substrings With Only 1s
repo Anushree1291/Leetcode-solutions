@@ -1,0 +1,40 @@
+Leetcode -  1513. Number of Substrings With Only 1s
+https://leetcode.com/problems/number-of-substrings-with-only-1s/
+
+class Solution {
+    public int numSub(String s) {
+        if(s.length()==1 && s.equals("0")){
+            return 0;
+        }
+        else if(s.length()==1 && s.equals("1")){
+            return 1;
+        }
+        int i=0;
+        int j=0;
+        int n=s.length();
+        int m=1000000007;
+        long r=0;
+        long a;
+        for(i=1;i<n;i++){
+            if(s.charAt(i)!=s.charAt(i-1) && s.charAt(i-1)=='1'){
+                a=i-j;
+                r+=(a*(a+1))/2;
+                r=r%m;
+                j=i;
+            }
+            else if(s.charAt(i)!=s.charAt(i-1) && s.charAt(i-1)=='0'){
+                j=i;
+            }
+            else if(s.charAt(i)==s.charAt(i-1) && s.charAt(i-1)=='0'){
+                j=i+1;
+            }
+        }
+        if(s.charAt(n-1)=='1'){
+            a=i-j;
+        r+=(a*(a+1))/2;
+        r=r%m;
+        }
+        
+        return (int)r;
+    }
+}
