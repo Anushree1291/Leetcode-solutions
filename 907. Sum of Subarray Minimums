@@ -1,0 +1,29 @@
+Leetcode -  907. Sum of Subarray Minimums
+https://leetcode.com/problems/sum-of-subarray-minimums/
+
+class Solution {
+    public int sumSubarrayMins(int[] a){
+        int m=1000000007;
+        Stack<Integer> ar=new Stack<>();
+        long dp[] =new long[a.length];
+        long r=0;
+        for(int i=0;i<a.length;i++){
+            while(!ar.isEmpty() && a[ar.peek()]>=a[i]){
+                ar.pop();
+            }
+            if(ar.size()>0){
+                int b=ar.peek();
+                dp[i]=dp[b]+(i-b)*a[i];
+            }
+            else{
+                dp[i]+=(i+1)*a[i];
+            }
+            ar.push(i);
+        }
+        for(long i:dp){
+            r+=i;
+            r=r%m;
+        }
+        return (int)r;
+    }
+}
