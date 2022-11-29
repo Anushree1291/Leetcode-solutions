@@ -1,0 +1,33 @@
+Leetcode -  380. Insert Delete GetRandom O(1)
+https://leetcode.com/problems/insert-delete-getrandom-o1/
+
+class RandomizedSet {
+    List<Integer> ar=new LinkedList<Integer>();
+    int a;
+    public RandomizedSet() {
+        int a=0;
+    }
+    
+    public boolean insert(int v) {
+        if(ar.contains(v)){
+            return false;
+        }
+        a++;
+        ar.add(v);
+        return true;
+    }
+    
+    public boolean remove(int v) {
+        if(ar.contains(v)){
+            ar.remove(ar.indexOf(v));
+            a--;
+            return true;
+        }
+        return false;
+    }
+    
+    public int getRandom() {
+        int r=(int)(Math.random()*(a));
+        return ar.get(r);
+    }
+}
