@@ -1,0 +1,32 @@
+Leetcode - 1353. Maximum Number of Events That Can Be Attended
+https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/
+
+class Solution {
+    public int maxEvents(int[][] e) {
+        if(e == null || e.length==0){
+            return 0;
+        }
+        Arrays.sort(e,(a,b)->a[0]-b[0]);
+        PriorityQueue<Integer> p=new PriorityQueue<>();
+        int i=0;
+        int d=0;
+        int r=0;
+        int n=e.length;
+        while(i<n || !p.isEmpty()){
+            if(p.isEmpty()){
+                d=e[i][0];
+            }
+            while(i<n && d==e[i][0]){
+                p.add(e[i][1]);
+                i++;
+            }
+            p.poll();
+            r++;
+            d++;
+            while(!p.isEmpty() && d>p.peek()){
+                p.poll();
+            }
+        }
+        return r;
+    }
+}
