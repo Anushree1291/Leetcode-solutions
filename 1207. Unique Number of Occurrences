@@ -1,0 +1,20 @@
+Leetcode -   1207. Unique Number of Occurrences
+https://leetcode.com/problems/unique-number-of-occurrences/
+
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        Set<Integer> ar=new HashSet<Integer>();
+        Map<Integer,Integer> a=new HashMap<Integer,Integer>();
+        int c;
+        for(int x:arr){
+            c=a.containsKey(x)?a.get(x):0;
+            a.put(x,++c);
+        }
+        for(int x:a.values()){
+            ar.add(x);
+        }
+        if(a.size()==ar.size())
+            return true;
+        return false;
+    }
+}
