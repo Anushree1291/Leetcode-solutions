@@ -1,0 +1,29 @@
+Leetcode -   167. Two Sum II - Input Array Is Sorted
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+
+class Solution {
+    public int[] twoSum(int[] n, int t) {
+        int i=0;int j=n.length-1;
+        int s=0;
+        while(i<j){
+            s=n[i]+n[j];
+            if(s==t){
+                break;
+            }
+            else if(s>t){
+                while(n[j]==n[j-1]){
+                    j--;
+                }
+                j--;
+            }
+            else if(s<t){
+                while(n[i]==n[i+1]){
+                    i++;
+                }
+               i++;
+            }
+        }
+        int a[]={i+1,j+1};
+        return a;
+    }
+}
