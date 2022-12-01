@@ -1,0 +1,26 @@
+Leetcode -   189. Rotate Array
+https://leetcode.com/problems/rotate-array/
+
+class Solution {
+    public void rotate(int[] n, int k) {
+        k=k%n.length;
+        if(n.length==1 || k==0){
+            return;
+        }
+        
+        n=reve(0,n.length-1,n);
+
+        n=reve(0,k-1,n);
+        
+        n=reve(k,n.length-1,n);
+        
+    }
+    public int[] reve(int l,int h,int[] n){
+        for(int i=l;i<(l+(h-l)/2)+1;i++){
+            int a=n[h+l-i];
+            n[h+l-i]=n[i];
+            n[i]=a;
+        }
+        return n;
+    }
+}
