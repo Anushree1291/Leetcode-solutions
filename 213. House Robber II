@@ -1,0 +1,18 @@
+Leetcode -  213. House Robber II
+https://leetcode.com/problems/house-robber-ii/
+
+class Solution {
+    public int rob(int[] n) {
+        if(n.length==1) return n[0];
+        return Math.max(tra(n,0,n.length-2),tra(n,1,n.length-1));
+    }
+    public int tra(int [] n,int l,int h){
+        int in=0,en=0;
+        for(int i=l;i<=h;i++){
+            int a=in,e=en;
+            in=e+n[i];
+            en=Math.max(a,e);
+        }
+        return Math.max(en,in);
+    }
+}
