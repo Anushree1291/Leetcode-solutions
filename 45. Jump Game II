@@ -1,0 +1,21 @@
+Leetcode -  45. Jump Game II
+https://leetcode.com/problems/jump-game-ii/
+
+class Solution {
+    public int jump(int[] nu) {
+        if(nu.length==1){
+            return 0;
+        }
+        int n=nu.length;
+        int a[]=new int[n];
+        Arrays.fill(a,Integer.MAX_VALUE-1);
+        a[n-1]=0;
+        for(int i=n-2;i>=0;i--){
+            for(int j=1;j<=nu[i] && i+j<n;j++){
+                a[i]=Math.min(a[i],a[i+j]+1);
+            }
+        }
+        return a[0];
+        
+    }
+}
