@@ -1,0 +1,25 @@
+Leetcode -  198. House Robber
+https://leetcode.com/problems/house-robber/
+
+class Solution {
+    public int rob(int[] n) {
+        if(n.length==1){
+            return n[0];
+        }
+        else if(n.length ==2){
+            return n[0]>n[1]?n[0]:n[1];
+        }
+        int a=n.length;
+        n[a-3]+=n[a-1];
+        a=a-4;
+        while(a>=0){
+            n[a]+=n[a+2]>n[a+3]?n[a+2]:n[a+3];
+            a--;
+        }
+        
+        for(int i:n){
+            System.out.println(i);
+        }
+        return n[0]>n[1]?n[0]:n[1];
+    }
+}
