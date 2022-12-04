@@ -1,0 +1,33 @@
+Leetcode -  2256. Minimum Average Difference
+https://leetcode.com/problems/minimum-average-difference/
+
+class Solution {
+    public int minimumAverageDifference(int[] n) {
+       long s=0;
+        for(int i:n){
+            s+=i;
+        }
+        long m=Integer.MAX_VALUE;
+        int a=n.length;
+        int p=0;
+        long t=0;
+        long b=0;
+        for(int i=0;i<a;i++){
+            t+=n[i];
+            s-=n[i];
+            if(i==a-1){
+                b=0;
+            }
+            else{
+                b=Math.round(s/(a-i-1));
+            }
+            n[i]=(int)Math.abs(Math.round(t/(i+1))-b);
+            //System.out.println(n[i]+" "+i+" "+(a-i-1)+" "+s);
+            if(n[i]<m){
+                p=i;
+                m=n[i];
+            }
+        }
+        return p;
+    }
+}
