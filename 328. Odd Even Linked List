@@ -1,0 +1,29 @@
+Leetcode -  328. Odd Even Linked List
+https://leetcode.com/problems/odd-even-linked-list/description/
+
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if((head==null)||(head.next==null)||(head.next.next==null)){
+            return head;
+        }
+        else{
+            ListNode p=new ListNode(0),q=new ListNode(0);
+            int i=1;ListNode a=p,b=q;
+            while(head!=null){
+                if(i%2!=0){
+                    p.next=head;
+                    p=p.next;
+                }
+                else{
+                    q.next=head;
+                    q=q.next;
+                }
+                head=head.next;
+                i++;
+            }
+            q.next=null;
+            p.next=b.next;
+            return a.next;
+        }
+    }
+}
