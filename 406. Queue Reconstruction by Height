@@ -1,0 +1,18 @@
+Leetcode -  406. Queue Reconstruction by Height
+https://leetcode.com/problems/queue-reconstruction-by-height/description/
+
+class Solution {
+    public int[][] reconstructQueue(int[][] p) {
+        Arrays.sort(p, (a,b)-> a[0]==b[0]?a[1]-b[1]:b[0]-a[0]);
+        for(int[] a:p){
+            System.out.println(a[0]+" "+a[1]);
+        }
+        List<int[]> ar=new LinkedList<>();
+
+        for(int[] a:p){
+            ar.add(a[1],a);
+            //System.out.println(ar.toString());
+        }
+        return ar.toArray(new int[ar.size()][]);
+    }
+}
