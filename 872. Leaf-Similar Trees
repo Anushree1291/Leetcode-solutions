@@ -1,0 +1,22 @@
+Leetcode -  872. Leaf-Similar Trees
+https://leetcode.com/problems/leaf-similar-trees/description/
+
+class Solution {
+    public boolean leafSimilar(TreeNode r1, TreeNode r2) {
+        return tra(r1).equals(tra(r2));
+    }
+    public String tra(TreeNode r){
+        String s="";
+        if(r.left==null && r.right==null){
+            s+=Integer.toString(r.val)+" ";
+            return s;
+        }
+        if(r.left!=null){
+            s+=tra(r.left);
+        }
+        if(r.right!=null){
+            s+=tra(r.right);
+        }
+        return s;
+    }
+}
