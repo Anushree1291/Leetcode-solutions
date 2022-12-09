@@ -1,0 +1,26 @@
+Leetcode - 1026. Maximum Difference Between Node and Ancestor
+https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/description/
+
+class Solution {
+    int d=Integer.MIN_VALUE;
+    public int maxAncestorDiff(TreeNode r) {
+        int[] a=tra(r);
+        return d;
+    }
+    public int[] tra(TreeNode r){
+        if(r==null) return new int[]{Integer.MIN_VALUE,Integer.MAX_VALUE};
+        if(r.left==null && r.right==null){
+            return new int[]{r.val,r.val};
+        }
+        int[] a=tra(r.left);
+        int[] b=tra(r.right);
+
+        int n=Math.min(a[1],b[1]);
+        int m=Math.max(a[0],b[0]);
+        d=Math.max(d,Math.max(Math.abs(r.val-m),Math.abs(r.val-n)));
+        m=Math.max(m,r.val);
+        n=Math.min(n,r.val);
+        return new int[]{m,n};
+    }
+
+}
