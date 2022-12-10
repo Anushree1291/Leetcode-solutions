@@ -1,0 +1,33 @@
+Leetcode -  1339. Maximum Product of Splitted Binary Tree
+https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/description/
+
+class Solution {
+    long a=0;
+    long l=Integer.MIN_VALUE;
+    public int maxProduct(TreeNode root) {
+        a=tra(root);
+        System.out.println(a);
+        long b=sol(root);
+        return (int)(l%1000000007);
+    }
+    public long tra(TreeNode r){
+        if(r==null){
+            return 0;
+        }
+        long l=tra(r.left);
+        long ri=tra(r.right);
+        return l+ri+r.val;
+    }
+    public long sol(TreeNode r){
+        if(r==null){
+            return 0;
+        }
+        long le=sol(r.left);
+        long ri=sol(r.right);
+        long b=a-le;
+        l=Math.max(l,le*b);
+        b=a-ri;
+        l=Math.max(l,ri*b);
+        return le+ri+r.val;
+    }
+}
