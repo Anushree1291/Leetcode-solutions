@@ -1,0 +1,27 @@
+Leetcode - 2501. Longest Square Streak in an Array
+https://leetcode.com/problems/longest-square-streak-in-an-array/
+
+class Solution {
+    public int longestSquareStreak(int[] n) {
+        Arrays.sort(n);
+        HashSet<Integer> s = new HashSet<Integer>();
+        for(int i:n){
+            s.add(i);
+        }
+        int m=-1;
+        for(int i=0;i<n.length;i++){
+                System.out.println(n[i]);
+            int j=n[i];
+            if(s.contains(j*j)){
+                    int c=0;
+                    while(s.contains(j*j)){
+                        c++;
+                        j=j*j;
+                    }
+                    m=Math.max(m,c+1);
+            }
+            
+        }
+        return m;
+    }
+}
