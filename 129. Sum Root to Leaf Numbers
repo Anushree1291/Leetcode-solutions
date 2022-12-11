@@ -1,0 +1,24 @@
+Leetcode -  129. Sum Root to Leaf Numbers
+https://leetcode.com/problems/sum-root-to-leaf-numbers/description/
+
+class Solution {
+    int m=0;
+    public int sumNumbers(TreeNode root) {
+        tra("",root);
+        return m;
+    }
+    public void tra(String s, TreeNode r){
+        if(r.left==null && r.right==null){
+            s+=r.val;
+            m+=Integer.parseInt(s);
+            return;
+        }
+        if(r.left!=null){
+            tra(s+r.val,r.left);
+        }
+        if(r.right!=null){
+            tra(s+r.val,r.right);
+        }
+        return;
+    }
+}
