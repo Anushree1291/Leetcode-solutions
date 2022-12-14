@@ -1,0 +1,23 @@
+Leetcode -  337. House Robber III
+https://leetcode.com/problems/house-robber-iii/
+
+class Solution {
+    public int rob(TreeNode root) {
+        int a[]=tra(root);
+        return Math.max(a[0],a[1]);
+    }
+    public int[] tra(TreeNode r){
+        if(r==null){
+            return new int[]{0,0};
+        }
+        if(r.left==null && r.right==null){
+            return new int[]{r.val,0};
+        }
+        int[] a=tra(r.left);
+        int[] b=tra(r.right);
+        int x=r.val+a[1]+b[1];
+        int y=Math.max(a[0],a[1])+Math.max(b[0],b[1]);
+        return new int[]{x,y};
+    }
+    
+}
