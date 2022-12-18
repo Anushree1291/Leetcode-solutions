@@ -1,0 +1,37 @@
+Leetcode -  739. Daily Temperatures
+https://leetcode.com/problems/daily-temperatures/
+
+class Solution {
+    public int[] dailyTemperatures(int[] t) {
+        Stack<Integer> ar=new Stack<Integer>();
+        int a[]=new int[t.length];
+        for(int i=t.length-1;i>=0;i--){
+            if(ar.empty()){
+                ar.push(i);
+                a[i]=0;
+                continue;
+            }
+            if(!ar.empty() && t[i]>=t[ar.peek()]){
+                while(!ar.empty() && t[i]>=t[ar.peek()]){
+                    ar.pop();
+                }
+                if(ar.empty()){
+                    ar.push(i);
+                a[i]=0;
+                continue;
+                }
+                else{
+                    a[i]=ar.peek()-i;
+                    ar.push(i);
+                }
+                
+            }
+            else{
+                a[i]=ar.peek()-i;
+                    ar.push(i);
+            }
+            
+        }
+        return a;
+    }
+}
