@@ -1,0 +1,28 @@
+Leetcode -  309. Best Time to Buy and Sell Stock with Cooldown
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+
+
+class Solution {
+    int[][] dp;
+    int n;
+    public int maxProfit(int[] p) {
+        n=p.length;
+        dp=new int[2][n];
+        Arrays.fill(dp[0],-1);
+        Arrays.fill(dp[1],-1);
+        tra(0,1,p);
+        return dp[1][0];
+    }
+    public int tra(int in,int b,int[] p){
+        if(in>=n){
+            return 0;
+        }
+        if(dp[b][in]!=-1) return dp[b][in];
+        if(b==1){
+            return dp[1][in]=Math.max(-p[in]+tra(in+1,0,p),tra(in+1,1,p));
+        }
+        else{
+            return dp[0][in]=Math.max(p[in]+tra(in+2,1,p),tra(in+1,0,p));
+        }
+    }
+}
