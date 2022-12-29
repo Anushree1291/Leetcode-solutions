@@ -1,0 +1,35 @@
+Leetcode -   1834. Single-Threaded CPU
+https://leetcode.com/problems/single-threaded-cpu/
+
+
+class Solution {
+    public int[] getOrder(int[][] t) {
+        PriorityQueue<int[]> a=new PriorityQueue<int[]>((c,b)->c[1]!=b[1]?c[1]-b[1]:c[2]-b[2]);
+        int s[][]=new int[t.length][3];
+        for(int i=0;i<t.length;i++){
+            s[i][0]=t[i][0];
+            s[i][1]=t[i][1];
+            s[i][2]=i;
+        }
+        Arrays.sort(s,(c,b)->c[0]!=b[0]?c[0]-b[0]:c[1]-b[1]);
+        int b[]=new int[t.length];
+        int ti=0;
+        int c=0;
+        int ai=0;
+        while(ti<t.length || !a.isEmpty()){
+            if(a.isEmpty() && c<s[ti][0] ){
+                c=s[ti][0];
+            }
+            while(ti<t.length && c>=s[ti][0]){
+                a.add(s[ti]);
+                ++ti;
+            }
+            c+=a.peek()[1];
+            b[ai]=a.peek()[2];
+            a.remove();
+            ai++;
+
+        }
+        return b;
+    }
+}
