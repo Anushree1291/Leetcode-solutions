@@ -1,0 +1,27 @@
+Leetcode  -  290. Word Pattern
+https://leetcode.com/problems/word-pattern/
+
+class Solution {
+    public boolean wordPattern(String p, String s) {
+        Map<Character,String> ar=new HashMap<Character,String>();
+        String[] sr=s.split(" ");
+        if(sr.length!=p.length()){
+            return false;
+        }
+        for(int i=0;i<sr.length;i++){
+            char ch=p.charAt(i);
+            if(ar.containsKey(ch)){
+                if(!ar.get(ch).equals(sr[i])){
+                    return false;
+                }
+            }
+            else if(ar.containsValue(sr[i])){
+                return false;
+            }
+            else{
+                ar.put(ch,sr[i]);
+            }
+        }
+        return true;
+    }
+} 
