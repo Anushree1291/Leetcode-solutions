@@ -19,11 +19,6 @@ class Solution {
                 
             }
         }
-        for(int i=0;i<p.length+1;i++){
-            for(int j=0;j<p[0].length()+1;j++){
-                System.out.print(a[i][j]);
-                
-            }System.out.println();}
         
         return tra(0,0,k-1);
     }
