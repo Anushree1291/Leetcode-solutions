@@ -15,8 +15,7 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        boolean b=tra(Long.MIN_VALUE,Long.MAX_VALUE,root);
-        return b;
+        return tra(Long.MIN_VALUE,Long.MAX_VALUE,root);
     }
     public boolean tra(long l,long u,TreeNode r){
         if(r==null){
