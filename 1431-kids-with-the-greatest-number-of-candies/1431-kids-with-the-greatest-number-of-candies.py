@@ -1,12 +1,4 @@
-import numpy as np
 class Solution:
-    def kidsWithCandies(self, c: List[int], e: int) -> List[bool]:
-        c=np.array(c)
-        b=np.max(c);
-        d=[]
-        for i in c:
-            if i+e>=b:
-                d.append(True)
-            else:
-                d.append(False)
-        return d
+    def kidsWithCandies(self, candies: List[int], e: int) -> List[bool]:
+        x=max(candies)
+        return [i+e>=x for i in candies]
