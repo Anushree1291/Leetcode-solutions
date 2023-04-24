@@ -1,8 +1,6 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        String a=tra(s);
-        String b=tra(t);
-        return a.equals(b);
+        return tra(s).equals(tra(t));
     }
     public String tra(String s){
         int a=0;
