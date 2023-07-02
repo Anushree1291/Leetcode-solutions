@@ -11,13 +11,15 @@ class Solution:
                 self.a=max(self.a,c)
                 return
             
+            tra(ind+1,c)
+            
             inx[r[ind][0]]-=1
             inx[r[ind][1]]+=1
             tra(ind+1,c+1)
             
             inx[r[ind][0]]+=1
             inx[r[ind][1]]-=1
-            tra(ind+1,c)
+            
             return
         
         
