@@ -9,7 +9,4 @@ class Solution:
         while f and f.next:
             s=s.next
             f=f.next.next
-        if not f:
-            return s
         return s
-
