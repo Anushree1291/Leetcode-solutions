@@ -14,4 +14,7 @@ class Solution:
                     m[n[j]]-=1
                     j+=1
             i+=1
+            ma=max(ma,i-j)
+
+            
         return ma
