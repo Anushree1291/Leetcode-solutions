@@ -1,7 +1,4 @@
 class Solution:
     def minimumOperations(self, n: List[int]) -> int:
-        c=0
-        for i in n:
-            if i%3!=0:
-                c+=1
-        return c
+        c=Counter([i%3 for i in n])
+        return c[2] + c[1]
