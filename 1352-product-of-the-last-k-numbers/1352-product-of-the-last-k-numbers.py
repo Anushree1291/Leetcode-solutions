@@ -18,6 +18,8 @@ class ProductOfNumbers:
     def getProduct(self, k: int) -> int:
         if k>len(self.p)-self.c:
             return 0
+        if self.p[-1]!=0:
+            return int(self.p[-1]/self.p[len(self.p)-k-1])
         b=1
         for i in range(len(self.a)-k,len(self.a)):
             b*=self.a[i]
