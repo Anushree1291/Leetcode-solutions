@@ -12,3 +12,5 @@ class Solution:
             extra-=(i+1)*(live[i+1]-live[i])
             
         return live[-1]+extra//n
+
+        
