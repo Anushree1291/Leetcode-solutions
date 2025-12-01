@@ -2,6 +2,7 @@ class Solution:
     def maxRunTime(self, n: int, b: List[int]) -> int:
         b.sort()
         extra=sum(b[:-n])
+        print(extra)
         live=b[-n:]
         
         for i in range(n-1):
@@ -13,4 +14,3 @@ class Solution:
             
         return live[-1]+extra//n
 
-        
