@@ -1,10 +1,9 @@
 class Solution:
-    def twoSum(self, nums: List[int], t: int) -> List[int]:
-        m={}
-        for ind,i in enumerate(nums):
-            if i in m:
-                return [ind,m[i]]
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        s = {}
+        for k,v in enumerate (nums):
+            if v in s:
+                return [ k , s.get(v)]
             else:
-                m[t-i]=ind
-                
-        return []
+                s[target - v] = k
+
